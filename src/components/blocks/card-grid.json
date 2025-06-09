@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blocks_card_grids",
+  "info": {
+    "displayName": "Card Grid"
+  },
+  "options": {},
+  "attributes": {
+    "card": {
+      "displayName": "Card",
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.card"
+    }
+  }
+}

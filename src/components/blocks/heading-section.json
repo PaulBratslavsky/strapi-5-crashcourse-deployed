@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_heading_sections",
+  "info": {
+    "displayName": "Heading Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "subHeading": {
+      "type": "string"
+    },
+    "heading": {
+      "type": "string"
+    },
+    "anchorLink": {
+      "type": "string"
+    }
+  }
+}
