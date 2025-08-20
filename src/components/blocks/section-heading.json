@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_blocks_heading_sections",
+  "collectionName": "components_blocks_section_headings",
   "info": {
-    "displayName": "Heading Section",
-    "description": ""
+    "displayName": "Section Heading"
   },
   "options": {},
   "attributes": {

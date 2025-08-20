@@ -385,17 +385,17 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    author: Schema.Attribute.Relation<'oneToOne', 'api::author.author'>;
+    author: Schema.Attribute.Relation<'manyToOne', 'api::author.author'>;
     blocks: Schema.Attribute.DynamicZone<
       [
+        'blocks.section-heading',
         'blocks.person-card',
+        'blocks.newsletter',
+        'blocks.markdown',
         'blocks.hero',
-        'blocks.heading-section',
         'blocks.faqs',
         'blocks.content-with-image',
         'blocks.card-grid',
-        'blocks.markdown',
-        'blocks.featured-articles',
       ]
     >;
     content: Schema.Attribute.RichText;
@@ -412,6 +412,10 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    relatedArticles: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article.article'
+    >;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -431,6 +435,7 @@ export interface ApiAuthorAuthor extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
     bio: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -502,14 +507,14 @@ export interface ApiLandingPageLandingPage extends Struct.SingleTypeSchema {
     blocks: Schema.Attribute.DynamicZone<
       [
         'blocks.hero',
-        'blocks.heading-section',
+        'blocks.section-heading',
         'blocks.card-grid',
         'blocks.content-with-image',
-        'blocks.faqs',
-        'blocks.person-card',
         'blocks.markdown',
-        'blocks.featured-articles',
+        'blocks.person-card',
+        'blocks.faqs',
         'blocks.newsletter',
+        'blocks.featured-articles',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;
@@ -544,13 +549,14 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
       [
+        'blocks.section-heading',
         'blocks.person-card',
+        'blocks.newsletter',
+        'blocks.markdown',
         'blocks.hero',
-        'blocks.heading-section',
         'blocks.faqs',
         'blocks.content-with-image',
         'blocks.card-grid',
-        'blocks.markdown',
         'blocks.featured-articles',
       ]
     >;
@@ -573,12 +579,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
 export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags';
   info: {
+    description: '';
     displayName: 'Tag';
     pluralName: 'tags';
     singularName: 'tag';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
     createdAt: Schema.Attribute.DateTime;

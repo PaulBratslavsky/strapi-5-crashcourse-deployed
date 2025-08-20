@@ -1,15 +1,14 @@
 {
   "collectionName": "components_layout_headers",
   "info": {
-    "displayName": "Header",
-    "description": ""
+    "displayName": "Header"
   },
   "options": {},
   "attributes": {
     "logo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.logo"
+      "component": "shared.logo-link"
     },
     "navItems": {
       "type": "component",

@@ -21,14 +21,14 @@
       "type": "dynamiczone",
       "components": [
         "blocks.hero",
-        "blocks.heading-section",
+        "blocks.section-heading",
         "blocks.card-grid",
         "blocks.content-with-image",
-        "blocks.faqs",
-        "blocks.person-card",
         "blocks.markdown",
-        "blocks.featured-articles",
-        "blocks.newsletter"
+        "blocks.person-card",
+        "blocks.faqs",
+        "blocks.newsletter",
+        "blocks.featured-articles"
       ]
     }
   }

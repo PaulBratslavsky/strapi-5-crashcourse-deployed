@@ -5,8 +5,7 @@
   },
   "options": {},
   "attributes": {
-    "card": {
-      "displayName": "Card",
+    "cards": {
       "type": "component",
       "repeatable": true,
       "component": "shared.card"

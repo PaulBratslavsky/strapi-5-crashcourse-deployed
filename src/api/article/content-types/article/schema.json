@@ -34,26 +34,32 @@
     },
     "author": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::author.author"
-    },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "blocks.person-card",
-        "blocks.hero",
-        "blocks.heading-section",
-        "blocks.faqs",
-        "blocks.content-with-image",
-        "blocks.card-grid",
-        "blocks.markdown",
-        "blocks.featured-articles"
-      ]
+      "relation": "manyToOne",
+      "target": "api::author.author",
+      "inversedBy": "articles"
     },
     "contentTags": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::tag.tag"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "blocks.section-heading",
+        "blocks.person-card",
+        "blocks.newsletter",
+        "blocks.markdown",
+        "blocks.hero",
+        "blocks.faqs",
+        "blocks.content-with-image",
+        "blocks.card-grid"
+      ]
+    },
+    "relatedArticles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
     }
   }
 }

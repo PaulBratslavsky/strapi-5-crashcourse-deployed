@@ -1,15 +1,14 @@
 {
   "collectionName": "components_layout_footers",
   "info": {
-    "displayName": "Footer",
-    "description": ""
+    "displayName": "Footer"
   },
   "options": {},
   "attributes": {
     "logo": {
       "type": "component",
       "repeatable": false,
-      "component": "shared.logo"
+      "component": "shared.logo-link"
     },
     "navItems": {
       "type": "component",
@@ -19,7 +18,7 @@
     "socialLinks": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.logo"
+      "component": "shared.logo-link"
     },
     "text": {
       "type": "text"

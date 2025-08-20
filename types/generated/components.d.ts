@@ -6,7 +6,7 @@ export interface BlocksCardGrid extends Struct.ComponentSchema {
     displayName: 'Card Grid';
   };
   attributes: {
-    card: Schema.Attribute.Component<'shared.card', true>;
+    cards: Schema.Attribute.Component<'shared.card', true>;
   };
 }
 
@@ -16,11 +16,11 @@ export interface BlocksContentWithImage extends Struct.ComponentSchema {
     displayName: 'Content With Image';
   };
   attributes: {
+    content: Schema.Attribute.RichText;
     heading: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
     link: Schema.Attribute.Component<'shared.link', false>;
     reversed: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    text: Schema.Attribute.RichText;
   };
 }
 
@@ -41,19 +41,6 @@ export interface BlocksFeaturedArticles extends Struct.ComponentSchema {
   };
   attributes: {
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
-  };
-}
-
-export interface BlocksHeadingSection extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_heading_sections';
-  info: {
-    description: '';
-    displayName: 'Heading Section';
-  };
-  attributes: {
-    anchorLink: Schema.Attribute.String;
-    heading: Schema.Attribute.String;
-    subHeading: Schema.Attribute.String;
   };
 }
 
@@ -107,15 +94,26 @@ export interface BlocksPersonCard extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksSectionHeading extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_section_headings';
+  info: {
+    displayName: 'Section Heading';
+  };
+  attributes: {
+    anchorLink: Schema.Attribute.String;
+    heading: Schema.Attribute.String;
+    subHeading: Schema.Attribute.String;
+  };
+}
+
 export interface LayoutBanner extends Struct.ComponentSchema {
   collectionName: 'components_layout_banners';
   info: {
-    description: '';
     displayName: 'Banner';
   };
   attributes: {
     description: Schema.Attribute.Text;
-    isVisible: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    isVisible: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     link: Schema.Attribute.Component<'shared.link', false>;
   };
 }
@@ -123,13 +121,12 @@ export interface LayoutBanner extends Struct.ComponentSchema {
 export interface LayoutFooter extends Struct.ComponentSchema {
   collectionName: 'components_layout_footers';
   info: {
-    description: '';
     displayName: 'Footer';
   };
   attributes: {
-    logo: Schema.Attribute.Component<'shared.logo', false>;
+    logo: Schema.Attribute.Component<'shared.logo-link', false>;
     navItems: Schema.Attribute.Component<'shared.link', true>;
-    socialLinks: Schema.Attribute.Component<'shared.logo', true>;
+    socialLinks: Schema.Attribute.Component<'shared.logo-link', true>;
     text: Schema.Attribute.Text;
   };
 }
@@ -137,12 +134,11 @@ export interface LayoutFooter extends Struct.ComponentSchema {
 export interface LayoutHeader extends Struct.ComponentSchema {
   collectionName: 'components_layout_headers';
   info: {
-    description: '';
     displayName: 'Header';
   };
   attributes: {
     cta: Schema.Attribute.Component<'shared.link', false>;
-    logo: Schema.Attribute.Component<'shared.logo', false>;
+    logo: Schema.Attribute.Component<'shared.logo-link', false>;
     navItems: Schema.Attribute.Component<'shared.link', true>;
   };
 }
@@ -161,7 +157,6 @@ export interface SharedCard extends Struct.ComponentSchema {
 export interface SharedLink extends Struct.ComponentSchema {
   collectionName: 'components_shared_links';
   info: {
-    description: '';
     displayName: 'Link';
   };
   attributes: {
@@ -173,16 +168,16 @@ export interface SharedLink extends Struct.ComponentSchema {
   };
 }
 
-export interface SharedLogo extends Struct.ComponentSchema {
-  collectionName: 'components_shared_logos';
+export interface SharedLogoLink extends Struct.ComponentSchema {
+  collectionName: 'components_shared_logo_links';
   info: {
-    description: '';
-    displayName: 'Logo';
+    displayName: 'Logo Link';
   };
   attributes: {
+    href: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
-    logoLink: Schema.Attribute.String;
-    logoText: Schema.Attribute.String;
+    isExternal: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    label: Schema.Attribute.String;
   };
 }
 
@@ -193,17 +188,17 @@ declare module '@strapi/strapi' {
       'blocks.content-with-image': BlocksContentWithImage;
       'blocks.faqs': BlocksFaqs;
       'blocks.featured-articles': BlocksFeaturedArticles;
-      'blocks.heading-section': BlocksHeadingSection;
       'blocks.hero': BlocksHero;
       'blocks.markdown': BlocksMarkdown;
       'blocks.newsletter': BlocksNewsletter;
       'blocks.person-card': BlocksPersonCard;
+      'blocks.section-heading': BlocksSectionHeading;
       'layout.banner': LayoutBanner;
       'layout.footer': LayoutFooter;
       'layout.header': LayoutHeader;
       'shared.card': SharedCard;
       'shared.link': SharedLink;
-      'shared.logo': SharedLogo;
+      'shared.logo-link': SharedLogoLink;
     }
   }
 }

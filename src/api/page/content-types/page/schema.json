@@ -24,13 +24,14 @@
     "blocks": {
       "type": "dynamiczone",
       "components": [
+        "blocks.section-heading",
         "blocks.person-card",
+        "blocks.newsletter",
+        "blocks.markdown",
         "blocks.hero",
-        "blocks.heading-section",
         "blocks.faqs",
         "blocks.content-with-image",
         "blocks.card-grid",
-        "blocks.markdown",
         "blocks.featured-articles"
       ]
     }
